@@ -30,13 +30,13 @@ URL = f'{API_URL}/project/{PROJECT_NAME}/env/{ENV_NAME}/key/{KEY_NAME}'
 
 @app.route("/")
 def main():
-    response = requests.get(URL)
-    color = json.loads(response.content.decode('utf-8'))['value']
+#    response = requests.get(URL)
+#    color = json.loads(response.content.decode('utf-8'))['value']
 
-    if color and color in SUPPORTED_COLORS:
-        COLOR = color
-    else:
-        COLOR = random.choice(["red", "green", "blue", "blue2", "darkblue", "pink"])
+ #   if color and color in SUPPORTED_COLORS:
+ #       COLOR = color
+ #   else:
+    COLOR = random.choice(["red", "green", "blue", "blue2", "darkblue", "pink"])
 
     return render_template('welcome.html', name=socket.gethostname(), color=color_codes[COLOR])
 
