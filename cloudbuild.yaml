@@ -1,15 +1,11 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', 'gcr.io/sampleapp/my-sample-webapp', '.' ]
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'push', 'gcr.io/sampleapp/my-sample-webapp', ]
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
-    - 'run'
-    - 'deploy'
-    - 'my-sample-webapp'
-    - '--region=us-central1'
-    - '--platform=managed'
-    - '--allow-unauthenticated'
-    - '--image=gcr.io/sampleapp/my-sample-webapp'
+  - functions
+  - deploy
+  - my-sample-webapp
+  - --source=.
+  - --trigger-http
+  - --runtime=python37
+  - --allow-unauthenticated
     
