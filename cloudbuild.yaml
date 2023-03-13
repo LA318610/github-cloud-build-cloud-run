@@ -12,4 +12,4 @@ steps:
     - '--platform=managed'
     - '--allow-unauthenticated'
     - '--image=gcr.io/${PROJECT_ID}/my-sample-webapp:$TAG_NAME'
-    - '--tag=latest'
+    
