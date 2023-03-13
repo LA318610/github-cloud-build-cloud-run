@@ -2,9 +2,9 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/${PROJECT_ID}/my-sample-webapp:latest', '.' ]
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/${PROJECT_ID}/my-sample-webapp:$SHORT_SHA', '.' ]
+  args: [ 'build', '-t', 'gcr.io/${PROJECT_ID}/my-sample-webapp:$SHORT_SHA,latest', '.' ]
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'push', 'gcr.io/${PROJECT_ID}/my-sample-webapp:$SHORT_SHA', ]
+  args: [ 'push', 'gcr.io/${PROJECT_ID}/my-sample-webapp:$SHORT_SHA,latest', ]
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
     - 'run'
@@ -13,5 +13,5 @@ steps:
     - '--region=us-central1'
     - '--platform=managed'
     - '--allow-unauthenticated'
-    - '--image=gcr.io/${PROJECT_ID}/my-sample-webapp:$SHORT_SHA'
+    - '--image=gcr.io/${PROJECT_ID}/my-sample-webapp:$SHORT_SHA,latest'
     
